@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>오늘하루, 커피</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="slick.css">
+  <link rel="stylesheet" type="text/css" href="slick-theme.css">
+  <link rel="stylesheet" href="style.css" />  
+</head>
+<body>
+  <div class="modal"> 
+    <div class="modal_body">
+      <span class="modalClose"><i style="font-size:50px;" class="material-icons md-dark">close</i></span>
+      <div class="modalInfo">
+        <div class="modalLeft">
+          <img class="modalImg" src="">
+        </div>
+        <div class="modalRight">        
+          <h1 class="modalName">오하커 에스프레소(HOT)</h1>
+          <p class="modalDesc">이곳에는 오하커 에스프로소의 설명이</p>
+          <p class="modalPrice">4.0</p>
+        </div>
+      </div>
+    </div> 
+  </div>
+
+  <div>
+    <ul class="menu">
+    </ul>
+  </div>
+
+  <div class="container">
+    <!-- <span><button class="pp2">back</button></span> -->
+    <div class="main">    
+    </div>
+    <!-- <span><button class="nn2">forward</button></span> -->
+  </div> 
+
+  <div class="footer">
+    <img src="logo.png">
+  </div>
+  <script src="daily.js"></script>
+  <script src="jquery-2.2.0.min.js" type="text/javascript"></script>
+  <script src="slick.js" type="text/javascript" charset="utf-8"></script>
+  <script> 
+    const body = document.querySelector('body');
+    const modal = document.querySelector('.modal');
+
+    modal.addEventListener('click', (event) => {
+      if (event.target === modal) {
+        modal.classList.toggle('show');
+
+        if (!modal.classList.contains('show')) {
+          body.style.overflow = 'auto';
+        }
+      }
+    });
+
+    document.querySelector('.modalClose').addEventListener('click', () => {
+      document.querySelector('.modal').style.display = 'none';
+    });
+
+    var slickopts = {
+    slidesToShow: 4,    /* 화면에 보여질 이미지 갯수 */
+    slidesToScroll: 4,  /* 스크롤시 이동할 이미지 갯수 */
+    //vertical:true,      /* 세로방향으로 슬라이드를 원하면 추가하기 */
+    //infinite: true ,    /* 맨끝이미지에서 끝나지 않고 다시 맨앞으로 이동 */ 
+    //autoplay: true, /* 자동으로 다음이미지 보여주기 */
+    dots : true,
+    rows: 2, // Removes the linear order. Would expect card 5 to be on next row, not stacked in groups.	
+    // prevArrow: $(".pp2"),
+    // nextArrow: $(".nn2"),
+    responsive: [
+      { breakpoint: 992,
+        settings: {
+          slidesToShow: 3
+        }
+      },
+      { breakpoint: 776,
+        settings: {
+          slidesToShow: 1,
+          rows: 1 // This doesn't appear to work in responsive (Mac/Chrome)
+        }
+      }]
+  };
+
+  $('.carousel').slick(slickopts);
+  //$('.page2').slick(slickopts);
+  //$('.page3').slick(slickopts);
+  // $('.carousel').slick('resize');
+  //$('.carousel').slick('refresh');
+    // modal.addEventListener('click', () => {
+    //   document.querySelector('.modal').style.display = 'none';
+    // })
+    
+    $(function(){
+			$('.carousel1').slick({
+				slide: 'div',		//슬라이드 되어야 할 태그 ex) div, li 
+				infinite : true, 	//무한 반복 옵션	 
+				slidesToShow : 4,		// 한 화면에 보여질 컨텐츠 개수
+				slidesToScroll : 1,		//스크롤 한번에 움직일 컨텐츠 개수
+				speed : 100,	 // 다음 버튼 누르고 다음 화면 뜨는데까지 걸리는 시간(ms)
+				arrows : true, 		// 옆으로 이동하는 화살표 표시 여부
+				dots : true, 		// 스크롤바 아래 점으로 페이지네이션 여부
+				autoplay : true,			// 자동 스크롤 사용 여부
+				autoplaySpeed : 10000, 		// 자동 스크롤 시 다음으로 넘어가는데 걸리는 시간 (ms)
+				pauseOnHover : true,		// 슬라이드 이동	시 마우스 호버하면 슬라이더 멈추게 설정
+				vertical : false,		// 세로 방향 슬라이드 옵션
+				prevArrow : "<button type='button' class='slick-prev'>Previous</button>",		// 이전 화살표 모양 설정
+				nextArrow : "<button type='button' class='slick-next'>Next</button>",		// 다음 화살표 모양 설정
+				dotsClass : "slick-dots", 	//아래 나오는 페이지네이션(점) css class 지정
+				draggable : true, 	//드래그 가능 여부 
+				
+				responsive: [ // 반응형 웹 구현 옵션
+					{  
+						breakpoint: 960, //화면 사이즈 960px
+						settings: {
+							//위에 옵션이 디폴트 , 여기에 추가하면 그걸로 변경
+							slidesToShow:3 
+						} 
+					},
+					{ 
+						breakpoint: 768, //화면 사이즈 768px
+						settings: {	
+							//위에 옵션이 디폴트 , 여기에 추가하면 그걸로 변경
+							slidesToShow:2 
+						} 
+					}
+				]
+
+			});
+  		})
+  		
+  </script>
+</body>
+</html>
